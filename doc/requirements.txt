@@ -1,0 +1,17 @@
+### Test-related
+
+    # Extension of unittest for easier testing
+    nose==1.3.7
+
+    # Colored nose output
+    rednose==1.2.1
+    colorama==0.3.7
+    python-termstyle==0.1.10
+
+### Other
+
+    # Python coding conventions
+    pep8==1.7.0
+
+    # Docstring conventions
+    pep257==0.7.0
