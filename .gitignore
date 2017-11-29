@@ -3,7 +3,10 @@ bin/
 include/
 lib/
 man/
+share/
+lib64
 pip-selfcheck.json
+pyvenv.cfg
 
 # Python-related files and folders
 __pycache__/
