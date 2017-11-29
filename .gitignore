@@ -1,0 +1,9 @@
+# Virtualenv-related files and folders
+bin/
+include/
+lib/
+pip-selfcheck.json
+
+# Python-related files and folders
+__pycache__/
+*.pyc
