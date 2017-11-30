@@ -4,6 +4,7 @@ import sys
 import getopt
 
 from santa.person_file_parser import PersonFileParser
+from santa.matchmaker import Matchmaker
 
 
 class Main:
@@ -57,6 +58,7 @@ class Main:
             sys.exit(2)
 
         people = PersonFileParser.parse(cls.people_filename)
+        Matchmaker.match(people)
         for person in people:
             print(person)
 
