@@ -1,9 +1,9 @@
-"""Contains the ParticipantParser class."""
+"""Contains the PersonFileParser class."""
 
 from santa.person import Person
 
 
-class ParticipantParser:
+class PersonFileParser:
     """Parses a CSV-type file containing Secret Santa participants."""
 
     # Character for inline comments in file
