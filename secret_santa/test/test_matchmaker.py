@@ -1,9 +1,9 @@
 """Automated tests for the Matchmaker class."""
 
 import unittest
+from unittest.mock import Mock
 
 from santa.matchmaker import Matchmaker
-from santa.person import Person
 
 
 class TestMatchmaker(unittest.TestCase):
@@ -21,17 +21,17 @@ class TestMatchmaker(unittest.TestCase):
         matchmaker = Matchmaker()
 
         with self.assertRaises(ValueError):
-            matchmaker.match([Person('Lonely', 'forever@alone.com')])
+            matchmaker.match([Mock('Lonely', 'forever@alone.com')])
 
     def test_match_two_person(self):
         """Test the match() method with a list of two Person objects."""
         matchmaker = Matchmaker()
-        red = Person('Red', 'red@red.com')
-        blue = Person('Blue', 'blue@blue.com')
+        red = Mock('Red', 'red@red.com')
+        blue = Mock('Blue', 'blue@blue.com')
 
         matchmaker.match([red, blue])
-        self.assertEqual(red.santa, blue)
-        self.assertEqual(blue.santa, red)
+        assert red.santa is blue
+        assert blue.santa is red
 
     def test_match_typical(self):
         """Test the match() method in a typical condition."""
@@ -41,8 +41,8 @@ class TestMatchmaker(unittest.TestCase):
         for i in range(200):
             people = []
             for c in ['a', 'b', 'c', 'd', 'e', 'f', 'g']:
-                people.append(Person(c, c + '@com.com'))
+                people.append(Mock(c, c + '@com.com'))
 
             matchmaker.match(people)
             for person in people:
-                self.assertNotEqual(person.santa, person)
+                assert person.santa is not person
