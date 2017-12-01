@@ -19,6 +19,19 @@ class TestPerson(unittest.TestCase):
         self.assertEqual(bob.email, 'happy@bob.com.us')
         self.assertEqual(bob.santa, foobar)
 
+    def test_invalid_email_init(self):
+        """Test the __init__() method with an invalid email argument."""
+        with self.assertRaises(ValueError):
+            foobar = Person('Foobar', '')
+        with self.assertRaises(ValueError):
+            foobar = Person('Foobar', 'foo@')
+        with self.assertRaises(ValueError):
+            foobar = Person('Foobar', '@bar.com.uk')
+        with self.assertRaises(ValueError):
+            foobar = Person('Foobar', 'foo$@bar.com')
+        with self.assertRaises(ValueError):
+            foobar = Person('Foobar', 'foo@&()bar.com.us')
+
     def test_set_santa(self):
         """Test the santa setter method."""
         alice = Person('Alice', 'alice@123.com')

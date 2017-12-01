@@ -1,5 +1,7 @@
 """Contains the Person class."""
 
+from mail.mail_util import MailUtil
+
 
 class Person:
     """Represents a person participating in a Secret Santa event."""
@@ -11,8 +13,14 @@ class Person:
             name:  The person's name.
             email: The person's email address.
             santa: The person's secret santa (default: None).
+
+        Raises:
+            ValueError: Email with invalid format. Note: The email is
+            not checked to see if it actually exists!
         """
         self._name = name
+        if not MailUtil.is_valid_email(email):
+            raise ValueError('"%s": email with invalid format!' % email)
         self._email = email
         self._santa = santa
 
