@@ -45,8 +45,8 @@ class PersonFileParser:
                                        % (filename, line))
 
                 # Create and add Person to the list
-                name = parts[0]
-                email = parts[1]
+                name = parts[0].strip()
+                email = parts[1].strip()
                 people.append(Person(name, email))
 
         return people

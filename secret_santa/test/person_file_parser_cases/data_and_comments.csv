@@ -1,9 +1,0 @@
-# Hello!
-test;t@test.com
-foo;b@bar.com  # Shall we try breaking the code?
-# How about here?
-apple;r@red.com
-# This guy shouldn't be read: banana;@yellow.com
-grape;p@purple.com
-pear;g@green.com # .com... Hehehehehe!
-# The end
