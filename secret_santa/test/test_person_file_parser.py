@@ -26,18 +26,22 @@ class TestPersonFileParser(unittest.TestCase):
         """Patch Person and check if parsed values are equal to expected.
 
         Args:
-            data:   Data to be used in mock file.
-            answer: Expected answer when parsing mocked file.
+            data:        Data to be used in mock file.
+            answer:      Expected answer when parsing mocked file.
+            mock_person: Patch for Person objects.
         """
         mock_person.side_effect = self.__mock_person_constructor
         with patch('builtins.open', return_value=StringIO(data)) as mock_file:
             people = PersonFileParser.parse(mock_file)
             self.assertEqual(people, answer)
 
-    @patch('builtins.open')
+    @patch('builtins.open', side_effect=FileNotFoundError)
     def test_file_not_found(self, mock_open):
-        """Check for error when file is not found."""
-        mock_open.side_effect = FileNotFoundError
+        """Check for error when file is not found.
+
+        Arg:
+            mock_open: Patch that raises FileNotFoundError when opening file.
+        """
         with self.assertRaises(FileNotFoundError):
             PersonFileParser.parse(mock_open)
 
