@@ -4,7 +4,6 @@
 # Directories
 
 SRCDIR:= secret_santa
-TESTDIR:= $(SRCDIR)/test
 
 # -------------------------------------------------------------
 # Bash Commands
@@ -31,7 +30,7 @@ syntax:
 
 # Check if code follows Python conventions
 style:
-	@$(PYTHON) -m pep8 $(SRCDIR); $(PYTHON) -m pep257 $(SRCDIR)
+	@$(PYTHON) -m pycodestyle $(SRCDIR); $(PYTHON) -m pep257 $(SRCDIR)
 
 # Count number of lines of code written
 count:
