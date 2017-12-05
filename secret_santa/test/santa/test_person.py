@@ -9,12 +9,12 @@ from santa.person import Person
 class TestPerson(unittest.TestCase):
     """Tests the Person class."""
 
-    @patch('santa.person.MailUtil.is_valid_email', return_value=True)
+    @patch('santa.person.MailUtil.is_valid_format', return_value=True)
     def test_init(self, mock_mail_util):
         """Test the __init__() method.
 
         Arg:
-            mock_mail_util: MailUtil.is_valid_email() patch returning True.
+            mock_mail_util: MailUtil.is_valid_format() patch returning True.
         """
         foobar = Person('Foobar', 'foo@bar.com')
         self.assertEqual(foobar.name, 'Foobar')
@@ -26,12 +26,12 @@ class TestPerson(unittest.TestCase):
         self.assertEqual(bob.email, 'happy@bob.com.us')
         self.assertEqual(bob.santa, foobar)
 
-    @patch('santa.person.MailUtil.is_valid_email', return_value=False)
+    @patch('santa.person.MailUtil.is_valid_format', return_value=False)
     def test_invalid_email_init(self, mock_mail_util):
         """Test the __init__() method assuming an invalid email is used.
 
         Arg:
-            mock_mail_util: MailUtil.is_valid_email() patch returning False.
+            mock_mail_util: MailUtil.is_valid_format() patch returning False.
         """
         with self.assertRaises(ValueError):
             foobar = Person('Foobar', '')
@@ -42,12 +42,12 @@ class TestPerson(unittest.TestCase):
         with self.assertRaises(ValueError):
             foobar = Person('Foobar', 'foo$@bar.com')
 
-    @patch('santa.person.MailUtil.is_valid_email', return_value=True)
+    @patch('santa.person.MailUtil.is_valid_format', return_value=True)
     def test_set_santa(self, mock_mail_util):
         """Test the santa setter method.
 
         Arg:
-            mock_mail_util: MailUtil.is_valid_email() patch returning True.
+            mock_mail_util: MailUtil.is_valid_format() patch returning True.
         """
         alice = Person('Alice', 'alice@123.com')
         bob = Person('Bob', 'bob@321.com.us')

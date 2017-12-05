@@ -19,7 +19,7 @@ class Person:
             not checked to see if it actually exists!
         """
         self._name = name
-        if not MailUtil.is_valid_email(email):
+        if not MailUtil.is_valid_format(email):
             raise ValueError('"%s": email with invalid format!' % email)
         self._email = email
         self._santa = santa

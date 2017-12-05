@@ -10,7 +10,7 @@ class MailUtil:
     EMAIL_RE = re.compile('(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)')
 
     @classmethod
-    def is_valid_email(cls, email):
+    def is_valid_format(cls, email):
         """Check if the given email has a valid format.
 
         Arg:
