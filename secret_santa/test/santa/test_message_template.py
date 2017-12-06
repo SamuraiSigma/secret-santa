@@ -19,7 +19,7 @@ class TestMessageTemplate(unittest.TestCase):
     @patch('santa.message_template.warnings.warn')
     def test_init_only_person_pattern(self, mock_warn):
         """Test the __init__() method with person pattern only."""
-        data = """Hi, \p. How are you? This \\\\ is a trick."""
+        data = """Hi, $p. How are you? This $$ is a trick."""
         with patch('builtins.open', mock_open(read_data=data)) as mock_file:
             MessageTemplate(mock_file)
             self.assertTrue(mock_warn.called)
@@ -27,7 +27,7 @@ class TestMessageTemplate(unittest.TestCase):
     @patch('santa.message_template.warnings.warn')
     def test_init_only_santa_pattern(self, mock_warn):
         """Test the __init__() method with santa pattern only."""
-        data = """My secret santa is \s. And I like backslashes: \\."""
+        data = """My secret santa is $s. And I like $."""
         with patch('builtins.open', mock_open(read_data=data)) as mock_file:
             MessageTemplate(mock_file)
             self.assertTrue(mock_warn.called)
@@ -35,7 +35,7 @@ class TestMessageTemplate(unittest.TestCase):
     @patch('santa.message_template.warnings.warn')
     def test_init_regular(self, mock_warn):
         """Test the __init__() method with a regular file."""
-        data = """Hi, \p! Your secret santa is \s. Backslash FTW \\\\!"""
+        data = """Hi, $p! Your secret santa is $s. Look at these: $$"""
         with patch('builtins.open', mock_open(read_data=data)) as mock_file:
             MessageTemplate(mock_file)
             self.assertFalse(mock_warn.called)
@@ -52,8 +52,8 @@ class TestMessageTemplate(unittest.TestCase):
         blue.email = 'blue@water.com.uk'
         blue.santa = red
 
-        data = """Hi, \p. You got \s. \\\\ bla bla."""
-        answer = """Hi, Blue. You got Red. \\ bla bla."""
+        data = """Hi, $p. You got $s. Roses are $$p, violets are $$, $$s."""
+        answer = """Hi, Blue. You got Red. Roses are $p, violets are $, $s."""
 
         with patch('builtins.open', mock_open(read_data=data)) as mock_file:
             template = MessageTemplate(mock_file)
