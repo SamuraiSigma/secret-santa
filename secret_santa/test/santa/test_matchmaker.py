@@ -25,10 +25,15 @@ class TestMatchmaker(unittest.TestCase):
 
     def test_match_two_person(self):
         """Test the match() method with a list of two Person objects."""
-        matchmaker = Matchmaker()
-        red = Mock('Red', 'red@red.com')
-        blue = Mock('Blue', 'blue@blue.com')
+        red = Mock()
+        red.name = 'Red'
+        red.email = 'red@red.com'
 
+        blue = Mock()
+        blue.name = 'Blue'
+        blue.email = 'blue@blue.com'
+
+        matchmaker = Matchmaker()
         matchmaker.match([red, blue])
         assert red.santa is blue
         assert blue.santa is red
@@ -41,7 +46,10 @@ class TestMatchmaker(unittest.TestCase):
         for i in range(200):
             people = []
             for c in ['a', 'b', 'c', 'd', 'e', 'f', 'g']:
-                people.append(Mock(c, c + '@com.com'))
+                person = Mock()
+                person.name = c
+                person.email = c + '@com.com'
+                people.append(person)
 
             matchmaker.match(people)
             for person in people:

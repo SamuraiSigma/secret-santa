@@ -45,11 +45,11 @@ class TestMessageTemplate(unittest.TestCase):
         """Test the replace() method."""
         red = Mock()
         red.name = 'Red'
-        red.email= 'red@fire.com'
+        red.email = 'red@fire.com'
 
         blue = Mock()
-        blue.name= 'Blue'
-        blue.email= 'blue@water.com.uk'
+        blue.name = 'Blue'
+        blue.email = 'blue@water.com.uk'
         blue.santa = red
 
         data = """Hi, \p. You got \s. \\\\ bla bla."""
