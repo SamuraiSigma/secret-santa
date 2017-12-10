@@ -22,7 +22,7 @@ class PersonFileParser:
                       SEP_CHAR defined in this class.
 
         Returns:
-            A list if Person objects correspondent to each Person in the file.
+            A list of Person objects correspondent to each Person in the file.
 
         Raises:
             RuntimeError: Invalid line found while parsing file.
