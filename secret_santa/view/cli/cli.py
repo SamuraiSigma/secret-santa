@@ -42,12 +42,14 @@ class CLI:
             elif opt in ['-t', '--title']:
                 self._title = arg
 
-        # Check if all necessary arguments were defined
         if self._people_filename is None:
             raise ValueError('Undefined participants file')
 
         if self._message_filename is None:
             raise ValueError('Undefined message template file')
+
+        if self._title is None:
+            self._title = ''
 
     @staticmethod
     def usage():
