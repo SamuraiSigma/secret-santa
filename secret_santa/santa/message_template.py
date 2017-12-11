@@ -16,17 +16,16 @@ class MessageTemplate:
     # Character used after SPECIAL_CHAR to designate secret santa name
     SANTA_CHAR = 's'
 
-    def __init__(self, filename):
-        """Read the message template to be sent to participants from a file.
+    def __init__(self, message):
+        """Read the message template to be sent to participants.
 
         Arg:
-            filename: Name of the file containing the message pattern. The
-                      message may contain patterns using SPECIAL_CHAR And
-                      other characters to be replaced later with person and
-                      secret santa names, respectively.
+            message: String representing the message pattern. It may contain
+                     patterns using SPECIAL_CHAR And other characters to be
+                     replaced later with person and secret santa names,
+                     respectively.
         """
-        with open(filename) as fd:
-            self._message = fd.read()
+        self._message = message
 
         person_re = '([^\%c])\%c%c' % \
                     (self.SPECIAL_CHAR, self.SPECIAL_CHAR, self.PERSON_CHAR)
