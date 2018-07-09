@@ -4,7 +4,7 @@ import sys
 import getopt
 
 from santa.matchmaker import Matchmaker
-from santa.person_file_parser import PersonFileParser
+from file_io.person_file_parser import PersonFileParser
 from santa.message_template import MessageTemplate
 
 

@@ -4,7 +4,7 @@ import unittest
 from unittest.mock import patch
 from io import StringIO
 
-from santa.person_file_parser import PersonFileParser
+from file_io.person_file_parser import PersonFileParser
 
 
 class TestPersonFileParser(unittest.TestCase):
@@ -21,7 +21,7 @@ class TestPersonFileParser(unittest.TestCase):
         """
         return [name, email]
 
-    @patch('santa.person_file_parser.Person')
+    @patch('file_io.person_file_parser.Person')
     def __patch_and_check(self, data, answer, mock_person):
         """Patch Person and check if parsed values are equal to expected.
 

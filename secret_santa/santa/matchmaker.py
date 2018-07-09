@@ -6,8 +6,8 @@ import random
 class Matchmaker:
     """Randomly chooses secret santas for participating people.
 
-    Note that the class guarantees that a person won't get themselves as
-    their secret santa.
+    The class guarantees that a person won't get themselves as their
+    secret santa.
     """
 
     @staticmethod

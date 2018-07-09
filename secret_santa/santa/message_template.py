@@ -21,7 +21,7 @@ class MessageTemplate:
 
         Arg:
             message: String representing the message pattern. It may contain
-                     patterns using SPECIAL_CHAR And other characters to be
+                     patterns using SPECIAL_CHAR and other characters to be
                      replaced later with person and secret santa names,
                      respectively.
         """
